@@ -161,10 +161,10 @@ def vigenere_cipher(message, key):
         if(m == " "):
             result += m
             continue
-        messageNum = ord(m.upper()) - 64
-        keyNum = ord(k.upper()) - 1 - 64
-        newValue = chr(((keyNum+messageNum-1)%26)+65)
-        result += newValue
+        mesnum = ord(m.upper()) - 64
+        keynum = ord(k.upper()) - 1 - 64
+        nv = chr(((keynum+mesnum-1)%26)+65)
+        result += nv
     return result
 
 def scytale_cipher(message, shift):
