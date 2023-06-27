@@ -137,7 +137,7 @@ def body_mass_index(weight, height):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    foot=int(str(height)[0])
-    inch=int(str(height)[1])
+    foot=int(height[0])
+    inch=int(height[1])
     bmi=(weight*0.453592)/(((foot*12+inch)*0.0254)**2)
     return bmi
