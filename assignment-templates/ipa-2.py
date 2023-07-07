@@ -37,17 +37,14 @@ def shift_letter(letter, shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    if letter == "":
+    if letter ==' ' or letter =='':
         return("")
     else:
         list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         old_letter=list.find(letter)
         new=old_letter+shift
-        if new<=25:
-            return list[new]
-        else:
-            pos=(new%26)
-            return list[pos]
+        pos=(new%26)
+        return list[pos]
 
 def caesar_cipher(message, shift):
     '''Caesar Cipher.
@@ -69,15 +66,22 @@ def caesar_cipher(message, shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    for i in message:
-        list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        old_letter=list.find(i)
-        new=old_letter+shift
-        if new<=25:
-            print(list[new],end="")
-        else:
-            pos=(new%26)
-            print (list[pos],end="")
+    result=""
+    if message == ' ' or message=='':
+        return ''
+    else:
+        for i in message:
+            if i ==" ":
+                result += " "
+            elif i.isalpha() and i.isupper():
+                list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                old_letter=list.find(i)
+                new=old_letter+shift
+                pos=(new%26)
+                result+=list[pos]
+            else:
+                result+=i
+        return result
 
 def shift_by_letter(letter, letter_shift):
     '''Shift By Letter.
@@ -107,18 +111,17 @@ def shift_by_letter(letter, letter_shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    for i in message:
-        if i==" ":
-            print(" ",end=" ")
-        else:
-            list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            old_letter=list.find(i)
-            new=old_letter+shift
-            if new<=25:
-                print(list[new],end="")
-            else:
-                pos=(new%26)
-                print (list[pos],end="")
+    if letter==" " or "":
+        return " "
+    elif letter.isalpha() and letter.isalpha() and letter_shift.isalpha() and letter_shift.isalpha():
+        list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        old_letter=list.find(letter)
+        shift=list.find(letter_shift)
+        new=old_letter+shift
+        pos=(new%26)
+        return list[pos]
+    else:
+        return letter
 
 def vigenere_cipher(message, key):
     '''Vigenere Cipher.
@@ -219,16 +222,17 @@ def scytale_cipher(message, shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    message_length = len(message)
-    if message_length % shift != 0:
-        additional_underscores = shift - (message_length % shift)
-        message += '_' * additional_underscores
+    new_message=''
+    cipher=''
+    slay=len(message)%shift
+    if slay!=0:
+        new_message=message+('_'*slay)
     else:
-        encoded_message = ""
-        for i in range(len(message)):
-            index = (i // shift) + (message_length // shift) * (i % shift)
-            encoded_message += message[index]
-    return encoded_message
+        new_message=message
+    for i in range(0,len(new_message)):
+        index=(i // shift) + (len(new_message) // shift) * (i % shift)
+        cipher+= new_message[index]
+    return cipher
 
 def scytale_decipher(message, shift):
     '''Scytale De-cipher.
