@@ -46,10 +46,10 @@ def relationship_status(from_member, to_member, social_graph):
                 return("friends")
             else:
                 return ("follower")
-        elif to_member in social_graph and from_member in social_graph[to_member]['following']:
-            return ("followed by")
-        else:
-            return ("no relationship")
+    elif to_member in social_graph and from_member in social_graph[to_member]['following']:
+        return ("followed by")
+    else:
+        return ("no relationship")
 
 
 def tic_tac_toe(board):
