@@ -37,14 +37,13 @@ def shift_letter(letter, shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    if letter ==' ' or letter =='':
-        return("")
-    else:
-        list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        old_letter=list.find(letter)
-        new=old_letter+shift
-        pos=(new%26)
-        return list[pos]
+    if letter ==" ":
+        return (" ")
+    slay = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    old_letter=slay.find(letter)
+    new=old_letter+shift
+    pos=(new%26)
+    return slay[pos]
 
 def caesar_cipher(message, shift):
     '''Caesar Cipher.
@@ -225,13 +224,13 @@ def scytale_cipher(message, shift):
     new_message=''
     cipher=''
     slay=len(message)%shift
-    if slay!=0:
-        new_message=message+('_'*slay)
+    if len(message)%shift != 0:
+        new_message=message+('_'*(shift-slay))
     else:
         new_message=message
-    for i in range(0,len(new_message)):
-        index=(i // shift) + (len(new_message) // shift) * (i % shift)
-        cipher+= new_message[index]
+    for i in range(len(new_message)):
+        index = (i // shift) + (len(new_message) // shift) * (i % shift)
+        cipher += new_message[index]
     return cipher
 
 def scytale_decipher(message, shift):
